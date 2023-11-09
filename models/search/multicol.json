@@ -1,0 +1,29 @@
+{
+    "combine": {
+        "Display_Google_GM": [
+            "Display_Google_ProspectiveQLE_GM_Prospecting_Weber",
+            "Display_Google_ProspectiveQLE_GM_Retargeting_Weber",
+            "Display_Google_QLE_JobHunting_GM_Prospecting_Weber",
+            "Display_Google_QLE_Moving_GM_Prospecting_Weber",
+            "Display_Google_QLE_NewParents_GM_Prospecting_Weber",
+            "Display_Google_QLE_Newlywed_GM_Prospecting_Weber"
+        ],
+        "OnlineVideo_MiQ_GM_under150percFPL": [
+            "OnlineVideo_MiQ_under150percFPL_Expansion_GM_Prospecting_Weber",
+            "OnlineVideo_MiQ_under150percFPL_Non.Expansion_GM_Prospecting_Weber"
+        ],
+        "Search_GM": [
+            "Search_Google.Brand_FFM_GM_Weber",
+            "Search_Google.Nonbrand_FFM_GM_Weber",
+            "Search_Microsoft.Brand_FFM_GM_Weber",
+            "Search_Microsoft.Nonbrand_FFM_GM_Weber"
+        ]
+    },
+    "adstocks": {},
+    "transforms": {
+        "uninsured_under65_uninsured_sum": "log(uninsured_under65_uninsured_sum)"
+    },
+    "exclude": [
+        "Search_GM_Clicks"
+    ]
+}

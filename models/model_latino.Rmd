@@ -1,0 +1,107 @@
+```{r}
+library(dplyr)
+library(stringr)
+library(plotly)
+
+source('functions.R')
+source('body.R')
+```
+
+```{r}
+f <- 'data/SEP22/master.xlsx'
+readxl::excel_sheets(f)
+
+df <- readxl::read_xlsx(f, 'master') %>% rename_with(.fn=make.names)
+media_cols <- readxl::read_xlsx(f, "media_cols")[['0']] %>% make.names()
+demo_cols <- readxl::read_xlsx(f, "demo_cols")[['0']] %>% make.names()
+media_units <- readxl::read_xlsx(f, "media_units")
+adstocks_init <- readxl::read_xlsx(f, "adstocks")
+
+media_names_df <- read.csv('data/SEP22/media_names.csv')
+```
+
+```{r}
+df$Week_num <- factor(df$Week)
+```
+
+```{r}
+media_vars <- media_units$selected
+names(media_vars) <- media_units$varname
+```
+
+```{r}
+model_dir <- 'models/SEP22'
+```
+
+```{r}
+model_args <- list(model='latino', model_file = 'path1.json', add_cols='Week_num', log=TRUE, scale=1)
+model_args <- c(model_params[[model_args$model]], model_args)
+
+model1 <- modelClass$new(
+  data=lst(df, media_vars, demo_cols, adstocks_init),
+  model_args
+)
+model1$runOLS()
+
+reg_sum <- summary(model1$reg)
+#reg_sum
+```
+
+```{r}
+neg <- Filter(function(x) x < 0, reg_sum$coefficients[,"Estimate"])
+neg <- neg[names(neg) %in% model1$predictors_media]
+
+#insig
+insig <- Filter(function(x) x > .05, reg_sum$coefficients[,"Pr(>|t|)"])
+insig <- insig[names(insig) %in% model1$predictors_media]
+
+#neg
+#insig
+
+spends_sum <- read.csv('data/SEP22/spends.csv', row.names=1)
+spends_sum$combined <- setNames(model1$combine_map, to_base_names(names(model1$combine_map)))[row.names(spends_sum)]
+spends_sum$neg <- row.names(spends_sum) %in% to_base_names(names(neg))
+
+high_spends <- spends_sum[spends_sum$neg,] %>% arrange(desc(spends)) %>% slice(1:3) %>% row.names()
+
+reg_sum$coefficients[grep('Latino_', names(model1$reg$coefficients)),]
+eth <- grep('Latino_', names(model1$reg$coefficients), value=TRUE)
+
+#can exclude easily with
+# dput(union(names(neg), names(insig)))
+```
+
+
+```{r}
+params_search(names(neg), model1)
+
+#toJSON(model1$combine_dict, pretty=TRUE, auto_unbox=TRUE)
+```
+
+```{r}
+library(reticulate)
+
+use_condaenv("r-reticulate")
+```
+
+```{r}
+var <- 'OTT_Latino_GM'
+
+system.time(max_results <- max_tstat(var, model1, iters=100L)) 
+
+max_results$params
+
+#toJSON(max_results$params %>% as.list(), pretty=TRUE, auto_unbox=TRUE)
+```
+
+```{r}
+#can show in Rstudio new window to view full size
+
+plot_ly(
+  z = model1$df_transformed[model1$predictors_media] %>% cor(),
+  x = model1$predictors_media,
+  y = model1$predictors_media,
+  type = "heatmap", height=1800, width=1800
+)
+```
+

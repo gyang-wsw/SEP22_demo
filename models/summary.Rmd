@@ -1,0 +1,141 @@
+```{r}
+library(dplyr)
+library(stringr)
+library(plotly)
+
+source('functions.R')
+source('body.R')
+```
+
+```{r}
+f <- 'data/SEP22/master.xlsx'
+readxl::excel_sheets(f)
+
+df <- readxl::read_xlsx(f, 'master') %>% rename_with(.fn=make.names)
+media_cols <- readxl::read_xlsx(f, "media_cols")[['0']] %>% make.names()
+demo_cols <- readxl::read_xlsx(f, "demo_cols")[['0']] %>% make.names()
+media_units <- readxl::read_xlsx(f, "media_units")
+adstocks_init <- readxl::read_xlsx(f, "adstocks")
+
+media_names_df <- read.csv('data/SEP22/media_names.csv')
+```
+
+```{r}
+df$Week_num <- factor(df$Week)
+```
+
+```{r}
+media_vars <- media_units$selected
+names(media_vars) <- media_units$varname
+
+adstocks_init[['Search_GM_Clicks']] <- adstocks_init$enrolls_others
+```
+
+```{r}
+model_dir <- 'models/SEP22'
+```
+
+```{r}
+model_args_lists <- list(
+  list(model='search', model_file = 'model1.json', add_cols='Week_num', log=FALSE, scale=1),
+  list(model='others', model_file = 'model1.json', add_cols='Week_num', log=TRUE, scale=1),
+  list(model='AA', model_file = 'model1.json', add_cols='Week_num', log=TRUE, scale=1)
+)
+```
+
+```{r}
+models <- list()
+
+for (i in 1:length(model_args_lists)) {
+  m <- model_args_lists[[i]]
+  model_args <- c(model_params[[m$model]], m)
+  
+  model_name <- model_args$model
+  
+  model1 <- modelClass$new(
+    data=lst(df, media_vars, demo_cols, adstocks_init),
+    model_args
+  )
+  model1$runOLS()
+  
+  models[[model_name]] <- model1
+}
+```
+
+```{r}
+models$AA$reg %>% summary()
+```
+
+Breakout effects for all models
+Don't breakout for post- combine transforms or those we're not interested in
+One example of a effects grouping that can be defined: media, channel, ethnicity
+```{r}
+channel_eth_groups <- function() {
+  media_group_df <- media_names_df
+  media_group_df$group <- make.names(paste(media_group_df$Media, media_group_df$Channel, media_group_df$Ethnicity, sep='.'))
+  sapply(split(media_group_df, media_group_df$group), function(x) x$varname)
+}
+
+models_breakout <- list(search='Search_GM_Clicks')
+no_breakout <- c('TV_GM', 'Search_GM')
+
+media_groups <- channel_eth_groups()
+media_groups[no_breakout] <- no_breakout
+
+media_groups <- c()
+```
+
+```{r}
+mains <- setdiff(names(models), names(models_breakout))
+
+for (m in names(models)) {
+  if (m %in% names(models_breakout)) {
+    models[[m]]$create_results_model(no_breakout)
+  }
+  else {
+    models[[m]]$create_results(groups=media_groups, breakout=models_breakout, no_breakout)
+  }
+}
+```
+
+```{r}
+m <- names(models)[names(models) %in% mains][1]
+effects_all <- models[[m]]$effects_sum %>% rename((!!paste0('effect.', m)) := effect)
+
+for (i in 2:length(names(models)[names(models) %in% mains])) {
+  m <- names(models)[names(models) %in% mains][i]
+  effects_all <- merge(effects_all, models[[m]]$effects_sum %>% rename((!!paste0('effect.', m)) := effect), by='name', all=TRUE)
+  rownames(effects_all) <- effects_all$name
+}
+```
+
+```{r}
+ethnicities <- c("others", "AA", "latino")
+
+effects_all[is.na(effects_all)] <- 0
+effects_all$total_ethnicities <- effects_all[colnames(effects_all) %in% paste0('effect.', ethnicities)] %>% rowSums()
+```
+
+Use effects breakout groups to combine spend and also combine for no_breakouts e.g. Search
+```{r}
+spends_sum <- read.csv('data/SEP22/spends.csv', row.names=1)
+spends_sum$varname <- row.names(spends_sum)
+spends_sum[models$others$model_dict$combine[['Search_GM']] %>% unlist(), 'varname'] <- 'Search_GM'
+spends_sum <- spends_sum %>% group_by(varname) %>% summarise(spends=sum(spends))
+
+spends_names <- merge(spends_sum, media_names_df, by='varname', all=TRUE)
+
+spends_group <- spends_names
+for (k in names(media_groups)) {
+  spends_group[spends_group$varname %in% media_groups[[k]], 'group'] <- k
+}
+
+spends_group <- spends_group %>% group_by(group) %>% summarise(spends=sum(spends))
+```
+
+```{r}
+effects_spends <- merge(effects_all, spends_group, by.x='name', by.y='group', all=TRUE)
+
+effects_spends$efficacy_ethnicities <- effects_spends$total_ethnicities / (effects_spends$spends / 1000)
+```
+

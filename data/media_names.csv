@@ -1,0 +1,60 @@
+,Media,Channel,Audience,Sub-Audience,Ethnicity,Funnel,Source,varname
+0,Display,Google,Prospective QLE,,AA,Prospecting,Weber,Display_Google_ProspectiveQLE_AA_Prospecting_Weber
+1,Display,Google,Prospective QLE,,GM,Prospecting,Weber,Display_Google_ProspectiveQLE_GM_Prospecting_Weber
+2,Display,Google,Prospective QLE,,GM,Retargeting,Weber,Display_Google_ProspectiveQLE_GM_Retargeting_Weber
+3,Display,Google,QLE,Job Hunting,GM,Prospecting,Weber,Display_Google_QLE_JobHunting_GM_Prospecting_Weber
+4,Display,Google,QLE,Moving,GM,Prospecting,Weber,Display_Google_QLE_Moving_GM_Prospecting_Weber
+5,Display,Google,QLE,New Parents,GM,Prospecting,Weber,Display_Google_QLE_NewParents_GM_Prospecting_Weber
+6,Display,Google,QLE,Newlywed,GM,Prospecting,Weber,Display_Google_QLE_Newlywed_GM_Prospecting_Weber
+7,Display,MiQ,<150% FPL,Expansion,GM,Prospecting,Weber,Display_MiQ_under150percFPL_Expansion_GM_Prospecting_Weber
+8,Display,MiQ,<150% FPL,Non-Expansion,GM,Prospecting,Weber,Display_MiQ_under150percFPL_Non.Expansion_GM_Prospecting_Weber
+9,OTT,Amazon,Prospective QLE,,AA,,Weber,OTT_Amazon_ProspectiveQLE_AA_Weber
+10,OTT,Amazon,Prospective QLE,,GM,,Weber,OTT_Amazon_ProspectiveQLE_GM_Weber
+11,OTT,Hulu,Prospective QLE,,AA,,Weber,OTT_Hulu_ProspectiveQLE_AA_Weber
+12,OTT,Hulu,Prospective QLE,,GM,,Weber,OTT_Hulu_ProspectiveQLE_GM_Weber
+13,OTT,Roku,Prospective QLE,,AA,,Weber,OTT_Roku_ProspectiveQLE_AA_Weber
+14,OTT,Roku,Prospective QLE,,GM,,Weber,OTT_Roku_ProspectiveQLE_GM_Weber
+15,OTT,,,,Latino,,Elevation,OTT_Latino_Elevation
+16,Online Video,MiQ,<150% FPL,Expansion,GM,Prospecting,Weber,OnlineVideo_MiQ_under150percFPL_Expansion_GM_Prospecting_Weber
+17,Online Video,MiQ,<150% FPL,Non-Expansion,GM,Prospecting,Weber,OnlineVideo_MiQ_under150percFPL_Non.Expansion_GM_Prospecting_Weber
+18,Online Video,YouTube,Prospective QLE,,AA,Prospecting,Weber,OnlineVideo_YouTube_ProspectiveQLE_AA_Prospecting_Weber
+19,Online Video,YouTube,Prospective QLE,,GM,Prospecting,Weber,OnlineVideo_YouTube_ProspectiveQLE_GM_Prospecting_Weber
+20,Online Video,YouTube,QLE,Job Hunting,GM,Prospecting,Weber,OnlineVideo_YouTube_QLE_JobHunting_GM_Prospecting_Weber
+21,Online Video,YouTube,QLE,Moving,GM,Prospecting,Weber,OnlineVideo_YouTube_QLE_Moving_GM_Prospecting_Weber
+22,Online Video,YouTube,QLE,New Parents,GM,Prospecting,Weber,OnlineVideo_YouTube_QLE_NewParents_GM_Prospecting_Weber
+23,Online Video,YouTube,QLE,Newlywed,GM,Prospecting,Weber,OnlineVideo_YouTube_QLE_Newlywed_GM_Prospecting_Weber
+24,Radio,,Local,,GM,,Weber,Radio_Local_GM_Weber
+25,Radio,,,,Latino,,Elevation,Radio_Latino_Elevation
+26,Search,Google - Brand,FFM,,GM,,Weber,Search_Google.Brand_FFM_GM_Weber
+27,Search,Google - Nonbrand,FFM,,GM,,Weber,Search_Google.Nonbrand_FFM_GM_Weber
+28,Search,Microsoft - Brand,FFM,,GM,,Weber,Search_Microsoft.Brand_FFM_GM_Weber
+29,Search,Microsoft - Nonbrand,FFM,,GM,,Weber,Search_Microsoft.Nonbrand_FFM_GM_Weber
+30,Social,FB,<150% FPL,Expansion,GM,Prospecting,Weber,Social_FB_under150percFPL_Expansion_GM_Prospecting_Weber
+31,Social,FB,<150% FPL,Non-Expansion,GM,Prospecting,Weber,Social_FB_under150percFPL_Non.Expansion_GM_Prospecting_Weber
+32,Social,FB,Prospective QLE,,AA,Prospecting,Weber,Social_FB_ProspectiveQLE_AA_Prospecting_Weber
+33,Social,FB,Prospective QLE,,GM,Prospecting,Weber,Social_FB_ProspectiveQLE_GM_Prospecting_Weber
+34,Social,FB,Prospective QLE,,GM,Retargeting,Weber,Social_FB_ProspectiveQLE_GM_Retargeting_Weber
+35,Social,FB,QLE,Job Hunting,GM,Prospecting,Weber,Social_FB_QLE_JobHunting_GM_Prospecting_Weber
+36,Social,FB,QLE,Moving,GM,Prospecting,Weber,Social_FB_QLE_Moving_GM_Prospecting_Weber
+37,Social,FB,QLE,New Parents,GM,Prospecting,Weber,Social_FB_QLE_NewParents_GM_Prospecting_Weber
+38,Social,FB,QLE,Newlywed,GM,Prospecting,Weber,Social_FB_QLE_Newlywed_GM_Prospecting_Weber
+39,Social,FB,QLE,Turning 26,GM,Prospecting,Weber,Social_FB_QLE_Turning26_GM_Prospecting_Weber
+40,Social,IG,<150% FPL,Expansion,GM,Prospecting,Weber,Social_IG_under150percFPL_Expansion_GM_Prospecting_Weber
+41,Social,IG,<150% FPL,Non-Expansion,GM,Prospecting,Weber,Social_IG_under150percFPL_Non.Expansion_GM_Prospecting_Weber
+42,Social,IG,Prospective QLE,,AA,Prospecting,Weber,Social_IG_ProspectiveQLE_AA_Prospecting_Weber
+43,Social,IG,Prospective QLE,,GM,Prospecting,Weber,Social_IG_ProspectiveQLE_GM_Prospecting_Weber
+44,Social,IG,Prospective QLE,,GM,Retargeting,Weber,Social_IG_ProspectiveQLE_GM_Retargeting_Weber
+45,Social,IG,QLE,Job Hunting,GM,Prospecting,Weber,Social_IG_QLE_JobHunting_GM_Prospecting_Weber
+46,Social,IG,QLE,Moving,GM,Prospecting,Weber,Social_IG_QLE_Moving_GM_Prospecting_Weber
+47,Social,IG,QLE,New Parents,GM,Prospecting,Weber,Social_IG_QLE_NewParents_GM_Prospecting_Weber
+48,Social,IG,QLE,Newlywed,GM,Prospecting,Weber,Social_IG_QLE_Newlywed_GM_Prospecting_Weber
+49,Social,IG,QLE,Turning 26,GM,Prospecting,Weber,Social_IG_QLE_Turning26_GM_Prospecting_Weber
+50,TV,ABC,,,GM,,Weber,TV_ABC_GM_Weber
+51,TV,ANT,,,GM,,Weber,TV_ANT_GM_Weber
+52,TV,CBS,,,GM,,Weber,TV_CBS_GM_Weber
+53,TV,CW,,,GM,,Weber,TV_CW_GM_Weber
+54,TV,FOX,,,GM,,Weber,TV_FOX_GM_Weber
+55,TV,IND,,,GM,,Weber,TV_IND_GM_Weber
+56,TV,MET,,,GM,,Weber,TV_MET_GM_Weber
+57,TV,NBC,,,GM,,Weber,TV_NBC_GM_Weber
+58,TV,,,,Latino,,Elevation,TV_Latino_Elevation

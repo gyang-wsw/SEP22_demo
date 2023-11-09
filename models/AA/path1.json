@@ -1,0 +1,87 @@
+{
+    "combine": {
+        "Display_GM": [
+            "Display_Google_ProspectiveQLE_GM_Prospecting_Weber",
+            "Display_Google_ProspectiveQLE_GM_Retargeting_Weber",
+            "Display_Google_QLE_JobHunting_GM_Prospecting_Weber",
+            "Display_Google_QLE_Moving_GM_Prospecting_Weber",
+            "Display_Google_QLE_NewParents_GM_Prospecting_Weber",
+            "Display_Google_QLE_Newlywed_GM_Prospecting_Weber",
+            "Display_MiQ_under150percFPL_Expansion_GM_Prospecting_Weber",
+            "Display_MiQ_under150percFPL_Non.Expansion_GM_Prospecting_Weber"
+        ],
+        "Search_GM": [
+            "Search_Google.Brand_FFM_GM_Weber",
+            "Search_Google.Nonbrand_FFM_GM_Weber",
+            "Search_Microsoft.Brand_FFM_GM_Weber",
+            "Search_Microsoft.Nonbrand_FFM_GM_Weber"
+        ],
+        "OnlineVideo_GM_Prospecting": [
+            "OnlineVideo_MiQ_under150percFPL_Expansion_GM_Prospecting_Weber",
+            "OnlineVideo_MiQ_under150percFPL_Non.Expansion_GM_Prospecting_Weber",
+            "OnlineVideo_YouTube_ProspectiveQLE_GM_Prospecting_Weber",
+            "OnlineVideo_YouTube_QLE_JobHunting_GM_Prospecting_Weber",
+            "OnlineVideo_YouTube_QLE_Moving_GM_Prospecting_Weber",
+            "OnlineVideo_YouTube_QLE_NewParents_GM_Prospecting_Weber",
+            "OnlineVideo_YouTube_QLE_Newlywed_GM_Prospecting_Weber"
+        ],
+        "TV_GM": [
+            "TV_ABC_GM_Weber",
+            "TV_ANT_GM_Weber",
+            "TV_CBS_GM_Weber",
+            "TV_CW_GM_Weber",
+            "TV_FOX_GM_Weber",
+            "TV_IND_GM_Weber",
+            "TV_MET_GM_Weber",
+            "TV_NBC_GM_Weber"
+        ],
+        "Social_FB_GM": [
+            "Social_FB_ProspectiveQLE_GM_Prospecting_Weber",
+            "Social_FB_ProspectiveQLE_GM_Retargeting_Weber",
+            "Social_FB_QLE_JobHunting_GM_Prospecting_Weber",
+            "Social_FB_QLE_Moving_GM_Prospecting_Weber",
+            "Social_FB_QLE_NewParents_GM_Prospecting_Weber",
+            "Social_FB_QLE_Newlywed_GM_Prospecting_Weber",
+            "Social_FB_QLE_Turning26_GM_Prospecting_Weber"
+        ],
+        "Social_FB_GM_under150percFPL": [
+            "Social_FB_under150percFPL_Expansion_GM_Prospecting_Weber",
+            "Social_FB_under150percFPL_Non.Expansion_GM_Prospecting_Weber"
+        ],
+        "Social_IG_QLE_GM": [
+            "Social_IG_QLE_JobHunting_GM_Prospecting_Weber",
+            "Social_IG_QLE_Moving_GM_Prospecting_Weber",
+            "Social_IG_QLE_NewParents_GM_Prospecting_Weber",
+            "Social_IG_QLE_Newlywed_GM_Prospecting_Weber",
+            "Social_IG_QLE_Turning26_GM_Prospecting_Weber"
+        ],
+        "Social_IG_ProspectiveQLE_GM": [
+            "Social_IG_ProspectiveQLE_GM_Prospecting_Weber",
+            "Social_IG_ProspectiveQLE_GM_Retargeting_Weber"
+        ],
+        "OTT_AA_GM": [
+            "OTT_Amazon_ProspectiveQLE_GM_Weber",
+            "OTT_Hulu_ProspectiveQLE_GM_Weber",
+            "OTT_Roku_ProspectiveQLE_GM_Weber",
+            "OTT_Amazon_ProspectiveQLE_AA_Weber",
+            "OTT_Hulu_ProspectiveQLE_AA_Weber",
+            "OTT_Roku_ProspectiveQLE_AA_Weber"
+        ]
+    },
+    "adstocks_pre": {
+        "Radio_Local_GM_Weber_GRPs": 0.5
+    },
+    "adstocks_post": {
+        "TV_GM_GRPs": 0.8
+    },
+    "dimret_post": {
+        "TV_GM_GRPs": 0.1
+    },
+    "transforms": {
+        "uninsured_under65_uninsured_sum": "log(uninsured_under65_uninsured_sum)"
+    },
+    "exclude": [
+        "Radio_Local_GM_Weber_GRPs",
+        "Social_IG_QLE_GM_Clicks"
+    ]
+}
